@@ -1,0 +1,6 @@
+ID,Title,Assigned To,Case ID,Comment,Defects,Elapsed,Estimate,Forecast,In Progress,Plan,Plan ID,Priority,References,Run,Run Configuration,Run ID,Section,Section Depth,Section Description,Status,Tested By,Tested On,Type,Version
+T1,Validate side navigation options visibility,Armine RAD,C1,,,1s,,,,,,Medium,,Snapshot 3,,R1,,Test Cases,0,Passed,Armine RAD,12/11/2024 8:01 AM,Other,
+T2,Validate active link highlighting,Armine RAD,C2,,,1s,,,,,,Medium,,Snapshot 3,,R1,,Test Cases,0,Passed,Armine RAD,12/11/2024 8:02 AM,Other,
+T3,Validate collapsible sidebar functionality,Armine RAD,C3,,,1s,,,,,,Medium,,Snapshot 3,,R1,,Test Cases,0,Passed,Armine RAD,12/11/2024 8:03 AM,Other,
+T4,Validate responsive design for the side navigation,Armine RAD,C4,,,1s,,,,,,Medium,,Snapshot 3,,R1,,Test Cases,0,Passed,Armine RAD,12/11/2024 8:04 AM,Other,
+T5,Validate role-based access control for navigation options,Armine RAD,C5,,,1s,,,,,,Medium,,Snapshot 3,,R1,,Test Cases,0,Passed,Armine RAD,12/11/2024 8:05 AM,Other,
