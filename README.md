@@ -1,138 +1,134 @@
-# 🚀 **Smart Dashboard - Snapshot 3**
+# 🚀 **Smart Dashboard - Snapshots Overview**
 
-## 📋 **Project Overview**  
-The **Smart Dashboard** is a centralized web application designed to consolidate user and system errors from various sources. **Snapshot 3** focuses on enhancing the dashboard’s front-end by introducing:  
-- A responsive **side navigation bar** for intuitive navigation.  
-- A **help button** to provide contextual guidance and improve user productivity.  
+## 📋 **Project Overview**
+The **Smart Dashboard** is a web application designed to consolidate user and system errors, streamlining the process of error investigation for service desk staff and developers. This README covers the progress across four key snapshots, showcasing incremental feature implementations.
 
 ---
 
-## 🎯 **Snapshot Objectives**  
-### **Key Goals**  
-- Implement a **responsive side navigation bar** to streamline user interaction and enhance UI/UX.  
-- Add a **help button** with dynamic, page-specific instructions and support resources.  
-- Ensure seamless integration with existing backend data flows and components.  
+## 🟢 **Snapshot 1**
+
+### **Objective**
+Design a centralized dashboard to display errors, ensuring efficient error handling by consolidating user and system error information.
+
+### **Goals**
+1. Create a display for **user errors**, including:
+   - Invalid or nonexistent data.
+   - Access permission issues (e.g., incorrect username/password).
+2. Create a display for **system errors**, highlighting critical network or server-side issues.
+3. Implement a display for **error severity**, enabling service desk staff to prioritize issues effectively.
+
+### **Features**
+- A navigation dropdown menu-based file management system.
+- Buttons for core functions:
+  - Help, Next Page, Previous Page, Import More Pages, View File, and Search.
+- Separate views for user and system errors, categorized by severity.
+
+### **Technical Specifications**
+- **Frameworks/Technologies:**
+  - MVC ASP.NET, Bootstrap 5, Entity Framework.
+  - Windows Authentication and HTTPS for secure communication.
+- **Database Integration:**
+  - SQL Server for case management integration.
+  - Oracle for enterprise printing integration.
+
+### **Design Constraints**
+- Display up to **200 records per page** for optimal performance.
+- Simplified UI to avoid overwhelming users with technical details.
+- Workflow:
+  - Pull data from the database.
+  - Convert data into readable formats.
+  - Display the formatted data on the dashboard.
 
 ---
 
-## 🛠️ **Features**
+## 🟡 **Snapshot 2**
 
-### 🌐 **Side Navigation Bar**
-- **What it does:**  
-  - Displays links for Dashboard, User Errors, System Errors, Help, and Settings.  
-  - Highlights the current active page.  
-  - Expands or collapses for better screen utilization.  
+### **Objective**
+Introduce a functional pagination feature to improve navigation of large datasets within the dashboard.
 
-- **How it works:**  
-  - Fully responsive design for desktops, tablets, and mobile devices.  
-  - Dynamic rendering of navigation options based on user roles and permissions.  
+### **Features**
+- Allow users to:
+  - Navigate between pages using "Next," "Previous," and specific page number buttons.
+  - Adjust the number of error entries displayed (up to 200 per page).
+- Enhance usability for handling large sets of error data efficiently.
 
-- **Technologies:**  
-  - **Frontend:** HTML5, CSS3, JavaScript, and Bootstrap 5.  
-  - **Components:**  
-    - Nav links with icons and labels.  
-    - Collapsible sidebar for optimized space.  
-
-### ❓ **Help Button**
-- **What it does:**  
-  - Provides page-specific help content, FAQs, and links to support documentation.  
-  - Displays a modal with dynamic content based on user roles and the current page.  
-
-- **How it works:**  
-  - Fully accessible from the navigation bar and dashboard interface.  
-  - Allows users to submit feedback on help content quality.  
-
-- **Technologies:**  
-  - **Frontend:** React (optional) or Bootstrap Modals.  
-  - **Backend:** API integration to fetch help content dynamically.  
+### **Technical Details**
+- Pagination is integrated into the error data views.
+- Dynamic page updates are supported for seamless navigation.
 
 ---
 
-## 🔄 **Data Flows**
+## 🔵 **Snapshot 3**
 
-### **User Navigation**
-1. **Login**: User logs in → Backend retrieves user roles and permissions.  
-2. **Navigation**: Sidebar dynamically displays links based on roles.  
-3. **Action**: Clicking a link triggers API calls or frontend routing to load relevant data.  
+### **Objective**
+Enhance the front-end with a **side navigation system** and a **help button** to improve user productivity.
 
-### **Help Button**
-1. **Request**: User clicks the button → Backend fetches help content based on the active page.  
-2. **Response**: Modal displays fetched help content.  
-3. **Logging**: User actions like feedback are logged for review.  
+### **Features**
 
----
+#### **Side Navigation**
+- **What it Does:**
+  - Displays options for Dashboard, User Errors, System Errors, Help, and Settings.
+  - Highlights the active page dynamically.
+  - Collapsible/expandable for optimized space usage.
+- **Technologies:**
+  - HTML5, CSS3, JavaScript, and Bootstrap 5.
+- **Components:**
+  - Nav Links: Icons and labels.
+  - Hover Effects: Previews expanded content.
 
-## ✅ **Functional Requirements**
-
-### 🧭 **Side Navigation**
-| **Requirement**          | **Description**                                     |
-|---------------------------|-----------------------------------------------------|
-| **Responsive Design**     | Adapts to all screen sizes.                         |
-| **Role-Based Links**      | Displays navigation options dynamically by role.    |
-| **Dynamic Highlighting**  | Highlights the current active page.                 |
-| **Collapsible Sidebar**   | Allows toggling between expanded and collapsed views. |
-| **Search Option**         | Optional search bar to locate navigation items.     |
-
-### 🆘 **Help Button**
-| **Requirement**            | **Description**                                     |
-|-----------------------------|-----------------------------------------------------|
-| **Context-Sensitive Help** | Displays instructions relevant to the current page. |
-| **Modal Implementation**   | Opens as a focused pop-up overlay.                  |
-| **User Feedback**          | Allows submitting feedback for help content.        |
+#### **Help Button**
+- **What it Does:**
+  - Displays contextual guidance, FAQs, and support links.
+  - Fully accessible from any page.
+- **Technologies:**
+  - React components or Bootstrap modals for dynamic content.
 
 ---
 
-## 🖥️ **System Design and Architecture**
+## 🟣 **Snapshot 4**
 
-### **Workflow**
-1. **User Role and Permissions**: Backend validates roles during login.  
-2. **Navigation Rendering**: API fetches routes, and frontend renders dynamically.  
-3. **Help Interaction**: Backend provides contextual help content displayed in a modal.
+### **Objective**
+Incorporate advanced data filtering features for enhanced data accessibility and user productivity.
 
-### **Security**
-- **Role-Based Access Control (RBAC)**: Limits visible links and help content based on roles.  
-- **Data Encryption**: Secures API communication via HTTPS.  
-- **Content Restrictions**: Admin-specific help content is restricted to authorized users.  
+### **Features**
 
----
+#### **Filtering System**
+- **Dynamic Options:**
+  - Dropdowns, date pickers, search fields, and checkboxes.
+- **Visual Indicators:**
+  - Display active filters and search results.
+- **Reset Filters:**
+  - Quickly reset to default views.
 
-## 📦 **Deliverables**
+#### **Backend Integration**
+- Processes filter parameters and returns filtered data.
+- Role-specific filters ensure data visibility aligns with permissions.
 
-1. **Software Design Document (SDD)**:  
-   - Comprehensive architecture, workflows, and data flow diagrams.  
-
-2. **Software Requirements Specification (SRS)**:  
-   - Detailed functional and non-functional requirements.  
-
-3. **User Manual**:  
-   - Step-by-step guides for side navigation and help button usage.  
-   - Visuals of expanded and collapsed navigation.  
+### **Future Improvements**
+1. **Windows Authentication:**
+   - Authenticate users via their Windows credentials.
+2. **Role-Based Views:**
+   - Restrict non-admin users to limited error details.
+3. **“More Errors” Button:**
+   - Load additional error entries for large datasets.
 
 ---
 
 ## 🔍 **Testing Plan**
-
-### **Side Navigation**
-- Validate responsiveness across devices and browsers.  
-- Test role-based access to ensure proper navigation visibility.  
-
-### **Help Button**
-- Test modal functionality for different pages.  
-- Confirm the accuracy and relevance of fetched content.  
+- Validate navigation, pagination, and filtering across devices and roles.
+- Ensure error severity levels and categories display accurately.
+- Test the security of backend API calls and user authentication.
 
 ---
 
 ## 🤝 **How to Contribute**
-1. Clone the repository and create a feature branch.  
-2. Make changes following project standards.  
-3. Submit a pull request for review.  
+1. Clone the repository and create a feature branch.
+2. Implement changes as per project standards.
+3. Submit a pull request for review.
 
 ---
 
-## 📧 **Contact Us**
-For support or questions, reach out to the team at **[Your Team Email]** or refer to the Help section in the dashboard.  
+## 📧 **Contact**
+For support, contact the team at **EMAIL** or refer to the Help section in the dashboard.
 
 ---
-
-# 🎉 **Let’s Build a Smarter Dashboard Together!**  
-Thank you for contributing to the **Smart Dashboard Project**. Your efforts make a difference! 🚀
