@@ -1,0 +1,204 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\titleformat{\section}{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\title{Smart Dashboard - Snapshots Overview}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Project Overview}
+The \textbf{Smart Dashboard} is a web application designed to consolidate user and system errors, streamlining the process of error investigation for service desk staff and developers. This README covers the progress across four key snapshots, showcasing incremental feature implementations.
+
+\section{Snapshot 1}
+\subsection*{Objective}
+Design a centralized dashboard to display errors, ensuring efficient error handling by consolidating user and system error information.
+
+\subsection*{Goals}
+\begin{itemize}
+    \item Create a display for \textbf{user errors}, including:
+    \begin{itemize}
+        \item Invalid or nonexistent data.
+        \item Access permission issues (e.g., incorrect username/password).
+    \end{itemize}
+    \item Create a display for \textbf{system errors}, highlighting critical network or server-side issues.
+    \item Implement a display for \textbf{error severity}, enabling service desk staff to prioritize issues effectively.
+\end{itemize}
+
+\subsection*{Features}
+\begin{itemize}
+    \item A navigation dropdown menu-based file management system.
+    \item Buttons for core functions:
+    \begin{itemize}
+        \item Help, Next Page, Previous Page, Import More Pages, View File, and Search.
+    \end{itemize}
+    \item Separate views for user and system errors, categorized by severity.
+\end{itemize}
+
+\subsection*{Technical Specifications}
+\textbf{Frameworks/Technologies:}
+\begin{itemize}
+    \item MVC ASP.NET, Bootstrap 5, Entity Framework.
+    \item Windows Authentication and HTTPS for secure communication.
+\end{itemize}
+
+\textbf{Database Integration:}
+\begin{itemize}
+    \item SQL Server for case management integration.
+    \item Oracle for enterprise printing integration.
+\end{itemize}
+
+\subsection*{Design Constraints}
+\begin{itemize}
+    \item Display up to 200 records per page for optimal performance.
+    \item Simplified UI to avoid overwhelming users with technical details.
+\end{itemize}
+
+\subsection*{Workflow}
+\begin{itemize}
+    \item Pull data from the database.
+    \item Convert data into readable formats.
+    \item Display the formatted data on the dashboard.
+\end{itemize}
+
+\section{Snapshot 2}
+\subsection{Recap of Last Snapshot}
+In the last snapshot, the goal was to essentially lay out the groundwork for the new Smart Dashboard to be used by QTC. At this point, we have a general flow for how the Smart Dashboard should contact QTC’s SQL databases and how we get that information for our application. At the same time, we have established the general User Interface for the webpages as well.
+\subsection*{Objective}
+The objective of this snapshot is to improve the Smart Dashboard functionality by adding in a functional pagination feature.
+The pagination feature should:
+
+
+\subsection*{Features}
+\begin{itemize}
+    \item Allow users to:
+    \begin{itemize}
+        \item Navigate between pages using "Next," "Previous," and specific page number buttons.
+        \item Adjust the number of error entries displayed (up to 200 per page).
+        \item 10 Records per page will be shown at a time by default, but dropdown menu will allow this to change.
+    \end{itemize}
+    \item Enhance usability for handling large sets of error data efficiently.
+\end{itemize}
+
+\subsection*{Technical Implementation Tasks - Backend}
+\begin{itemize}
+    \item For the pagination, Razor Pages will be used to implement this feature.
+    \item Create backend service to be used in dropdown menu: Create function calls that can be accessed by the href in each dropdown menu selection to change the amount of entries are stored per page
+\end{itemize}
+
+\subsection*{Technical Implementation Tasks - Frontend}
+\begin{itemize}
+    \item For the Front-End design of the pagination features, Bootstrap 5 will continue to be used as it has been with the rest of the project
+    \item 1. Implement ‘Previous’ and ‘Next’ buttons using the Bootstrap 5 Buttons object class to navigate between pages.
+    \item 2. Implement 6 Numerical Buttons:
+    \begin{itemize}
+    \item a. The first four buttons will display the first four numeric numbers in a sequence (e.g. 1, 2, 3, 4) on them.
+    \item b. The fifth button will show an ‘ … ‘ on it that will make the buttons 
+    \item c. The sixth button will show the very last numerical page of data (e.g. 20) depending on how many total pages of data there are.
+    \end{itemize}
+    \item 3. Implement dropdown menu to select amount of entries per page by using the .dropdown class in Bootstrap 5
+\end{itemize}
+
+\subsection*{User Interface Details - Pagination Navigation}
+\begin{itemize}
+\item 1. User can see the page numbers at the bottom of the interface.
+\item 2. Additionally, amount of entries is shown at the top of the page.
+\item 3. User selects which page number they want to view.
+\item 4. If more error entries are desired, user can Pull 200 more records by 5. selecting ‘More Pages.’
+\item 5. If no more records are available, ‘More Pages’ can no longer be selected.
+\end{itemize}
+
+
+
+
+\section{Snapshot 3}
+\subsection*{Objective}
+Enhance the front-end with a \textbf{side navigation system} and a \textbf{help button} to improve user productivity.
+
+\subsection*{Features}
+
+\subsubsection*{Side Navigation}
+\begin{itemize}
+    \item \textbf{What it Does:}
+    \begin{itemize}
+        \item Displays options for Dashboard, User Errors, System Errors, Help, and Settings.
+        \item Highlights the active page dynamically.
+        \item Collapsible/expandable for optimized space usage.
+    \end{itemize}
+    \item \textbf{Technologies:}
+    \begin{itemize}
+        \item HTML5, CSS3, JavaScript, and Bootstrap 5.
+    \end{itemize}
+    \item \textbf{Components:}
+    \begin{itemize}
+        \item Nav Links: Icons and labels.
+        \item Hover Effects: Previews expanded content.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection*{Help Button}
+\begin{itemize}
+    \item \textbf{What it Does:}
+    \begin{itemize}
+        \item Displays contextual guidance, FAQs, and support links.
+        \item Fully accessible from any page.
+    \end{itemize}
+    \item \textbf{Technologies:}
+    \begin{itemize}
+        \item React components or Bootstrap modals for dynamic content.
+    \end{itemize}
+\end{itemize}
+
+\section{Snapshot 4}
+\subsection*{Objective}
+Incorporate advanced data filtering features for enhanced data accessibility and user productivity.
+
+\subsection*{Features}
+
+\subsubsection*{Filtering System}
+\begin{itemize}
+    \item \textbf{Dynamic Options:}
+    \begin{itemize}
+        \item Dropdowns, date pickers, search fields, and checkboxes.
+    \end{itemize}
+    \item \textbf{Visual Indicators:}
+    \begin{itemize}
+        \item Display active filters and search results.
+    \end{itemize}
+    \item \textbf{Reset Filters:}
+    \begin{itemize}
+        \item Quickly reset to default views.
+    \end{itemize}
+\end{itemize}
+
+\subsubsection*{Backend Integration}
+\begin{itemize}
+    \item Processes filter parameters and returns filtered data.
+    \item Role-specific filters ensure data visibility aligns with permissions.
+\end{itemize}
+
+\subsection*{Future Improvements}
+\begin{itemize}
+    \item \textbf{Windows Authentication:}
+    \begin{itemize}
+        \item Authenticate users via their Windows credentials.
+    \end{itemize}
+    \item \textbf{Role-Based Views:}
+    \begin{itemize}
+        \item Restrict non-admin users to limited error details.
+    \end{itemize}
+    \item \textbf{"More Errors" Button:}
+    \begin{itemize}
+        \item Load additional error entries for large datasets.
+    \end{itemize}
+\end{itemize}
+
+\end{document}
