@@ -132,3 +132,8 @@ Incorporate advanced data filtering features for enhanced data accessibility and
 For support, contact the team at **EMAIL** or refer to the Help section in the dashboard.
 
 ---
+
+## 📚 **Resources**
+- [Jira Board for Project Tracking](https://calstatela-cs3338.atlassian.net/jira/software/projects/SMAR/boards/68)
+
+---
