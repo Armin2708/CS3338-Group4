@@ -1,0 +1,200 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+% Title and Author Information
+\title{Design Specification Document}
+\author{Leonardo Granados}
+\date{\today}
+
+\begin{document}
+
+\begin{titlepage}
+   \begin{center}
+       \vspace*{1cm}
+
+       \textbf{Software Design Specification}
+
+       \vspace{0.5cm}
+        QTC Smart Dashboard
+            
+       \vspace{1.5cm}
+
+       \textbf{Leonardo Granados-Castillo\\Armine Rad\\Benjamin Saucedo\\Ryan Takeshita}
+
+       \vfill
+            
+            
+       \vspace{0.8cm}
+
+       California State University, Los Angeles 11 December 2024 \end{center}
+\end{titlepage}
+
+\tableofcontents
+
+\newpage
+
+\section{Versions Table}
+\begin{tabular}{|l|l|p{5cm}|l|l|}
+\hline
+\textbf{Version} & \textbf{Date} & \textbf{Changes} & \textbf{Modified By} & \textbf{Approved By} \\ \hline
+1.0 & 09/07/2024 & Initial Draft of Design Doc & Group 4 & J. Valenzuela \\ \hline
+2.0 & 10/08/2024 & Added functional requirements and start on technical requirements & Group 4 & J. Valenzuela \\ \hline
+3.0 & 10/22/2024 & Completed functional requirements and technical specifications  & Group 4 & J. Valenzuela \\ \hline
+4.0 & 12/10/2024 & Finalized document by adding results, filling out glossary and references and filling out all missing information & Group 4 & J. Valenzuela \\ \hline
+\end{tabular}
+
+\newpage
+
+
+\section{Introduction}
+\subsection{Project Objective}
+The main objective of the QTC Smart Dashboard is to create a web application that consolidates and displays errors for both users and administrators. The dashboard aims to:
+\begin{itemize}
+    \item Display both user and system errors separately.
+    \item Data are extracted from multiple databases.
+    \item Implement pagination for efficient data presentation.
+    \item Integrate with a robust authorization module.
+\end{itemize}
+
+\subsection{Scope}
+The dashboard serves as a centralized platform for QTC service desk staff to view and address errors in data input or system operations. Its functionalities include displaying errors, providing insights for resolving them, and ensuring security and user-specific access.
+
+\section{System Design and Architecture}
+\subsection{High-Level Design}
+The system consists of a FrontEnd dashboard built with ASP.NET MVC and Razor Pages, and a BackEnd leveraging SQL Server and Entity Framework. Key components include:
+\begin{itemize}
+    \item Data Table: Displays paginated error records.
+    \item Search and Sort: Enables filtering and organizing data.
+    \item Error Severity Display: Highlights the criticality of errors.
+    \item Access Control: Restricts data visibility based on user roles.
+\end{itemize}
+
+\subsection{Error Types}
+The dashboard categorizes errors into:
+\begin{itemize}
+    \item User Errors: Data input issues (e.g., incorrect credentials).
+    \item System Errors: Infrastructure or server failures.
+    \item Severity Levels: Indicate the impact of errors.
+\end{itemize}
+
+\subsection{Topology and Workflow}
+The architecture follows a multi-tier approach:
+\begin{enumerate}
+    \item Users authenticate via a third-party module.
+    \item Configuration data is retrieved from the database.
+    \item Error data is displayed on the dashboard based on user permissions.
+\end{enumerate}
+
+\section{Technical Specifications}
+\subsection{Packages, Dependencies, and Libraries}
+\subsubsection{Database}
+\begin{itemize}
+    \item \textbf{Storage:} SQL Server 2019
+    \item \textbf{Hosting:} On-premise or cloud-based hosting services for the database
+\end{itemize}
+
+\subsubsection{Website}
+\begin{itemize}
+    \item \textbf{Development:}
+    \begin{itemize}
+        \item ASP.NET MVC for backend architecture
+        \item Razor Pages for server-side rendering
+        \item C\# for logic implementation
+        \item Entity Framework for ORM
+    \end{itemize}
+    \item \textbf{Dependencies:}
+    \begin{itemize}
+        \item Bootstrap for responsive UI design
+        \item jQuery for interactive elements
+        \item Microsoft.Identity for authentication
+        \item Newtonsoft.Json for JSON serialization
+    \end{itemize}
+\end{itemize}
+
+\subsection{Tools and Frameworks}
+\begin{itemize}
+    \item ASP.NET MVC for web application development.
+    \item C\# and .NET 6.0 for backend logic.
+    \item SQL Server for database management.
+    \item Bootstrap for responsive UI design.
+\end{itemize}
+
+\subsection{Integration Points}
+The dashboard integrates with multiple databases, supporting Oracle for enterprise printing and SQL Server for case management.
+
+\section{Functional Requirements}
+\begin{enumerate}
+    \item The dashboard shall display error data with pagination and filtering capabilities.
+    \item Users and admins shall access data based on their roles and permissions.
+    \item Error messages shall be presented in expandable rows or modal windows depending on their size.
+    \item Sorting and searching shall be implemented for error records.
+\end{enumerate}
+
+\section{External Interface Requirements}
+\subsection{User Interface}
+The User Interface will consist mainly of a window that displays the Smart Dashboard. The Dashboard will essentially show a table that lists the error reports that are retrieved from the database.\
+In addition to this, there will be buttons on the Dashboard that allow the transit between pages of different error records through Pagination. These buttons include:
+\begin{itemize}
+    \item Previous Page (takes user to previous page of records)
+    \item Next Page (takes user to next page of records)
+    \item '...' (to see intermediary pages)
+    \item Final Page (takes user to final page of records)
+    \item More Pages (loads in more pages of records)
+\end{itemize}
+There will also be a dropdown menu in the top left of the Dashboard that allows the user to select how many error report entries are listed per page.\
+
+Another aspect of the user interface will be a Side Navigation Bar that will be on the left side of the Smart Dashboard that will allow the user to easily navigate different data areas of the error reports as well as just improve the UI/UX overall.\
+
+An additional feature is the Help Button. This is a button located towards the bottom left of the Dashboard that will allow the user to find assistance in the form of guides on how the features of the Smart Dashboard work if they ever forget or need clarification.\
+
+The Dashboard also comes with a filtering ability for the user to specify which records they would like to show. With this filtering ability comes the implementation of logging in as a certain user with Windows Authentication. The user's role that they have upon login will give them access to certain filterings.
+
+\subsection{Software Interfaces}
+For the database access, the Smart Dashboard will communicate with the SQL/Oracle servers of QTC depending on the service requested.
+
+The .NET framework is the basis for the functionality of the Smart Dashboard.
+
+For Pagination, the backend functionality of the pages will be done through Razor Pages.
+
+The main interface that will be used for the UI/UX of the Smart Dashboard will be the Bootstrap 5 framework. Bootstrap 5 has several built-in modules that make buttons and other interactive features easy to implement.
+
+\section{Legal and Ethical Considerations}
+\subsection{Healthcare Related Database}
+QTC's error database is ultimately based on data from the health care field. For this reason, it is extremely important to take correct security measures when handling these data since it relates back to customers' sensitive information. To handle this, we must take advantage of proper encapsulation methods in our code and implement user authorization methods for anyone using the Smart Dashboard. We must also follow the HIPAA and California state guidelines. 
+
+\subsection{Ensuring Database is Intact}
+Because the Smart Dashboard is accessing QTC's database, we must ensure that the application itself does not affect the original data. Employing proper access control techniques will prevent users from altering or somehow affecting QTC's intellectual property.
+
+\section{Results}
+The Smart Dashboard was developed to help QTC consolidate errors that have occurred in different systems from different applications. Our design allows the application to load new business logic from different tenants by compiling their code into an assembly and placing it in a folder. At runtime, the web application will scan the folder, load the assembly, extract the business logic, and inject it into the interfaces of our web component.
+
+The errors displayed on the screen are from the specific integration point and tenant. It could be the case that the tenant pulls errors from a different data source apart from SQL and Oracle, which is possible by coding it into a new assembly and placing it into our assemblies folder in the website component.
+
+Multi-tenancy was accomplished as well as error retrieval from different data sources for the specific tenant. Lastly, front-end features were implemented to improve the user experience, such as data limitation, pagination, help modal, long error message truncation, a view button to see the long error, and partial authentication.
+
+\section{Appendices}
+\subsection{Glossary}
+\begin{itemize}
+    \item ASP.NET MVC: Model-View-Controller Framework for Dynamic Web Applications.
+    \item SQL: Structured Query Language for database operations.
+    \item Bootstrap: Front-end framework for responsive web design.
+    \item Dashboard: A visual menu that helps the user understand some given information and work with/manipulate that information.
+    \item Dropdown menu: A menu that when selected will reveal a submenu of several choices.
+    \item Pagination: The ability to have several pages of displayed data that can be traversed.
+    \item Razor Pages: A feature of .NET interface that allows for pages of data to easily be set up on a webpage.
+    \item Audit Trail: A record of changes or activities performed on a system to ensure accountability.
+\end{itemize}
+
+\subsection{References}
+\begin{itemize}
+    \item \url{https://learn.microsoft.com/en-us/aspnet/core/} - Official ASP.NET Core documentation.
+    \item \url{https://getbootstrap.com/docs/5.2/getting-started/introduction/} - Official Bootstrap documentation.
+    \item QTC Smart Dashboard Software Requirements Specification, December 2024.
+    \item QTC Smart Dashboard Technical Design Document, December 2024.
+    \item Microsoft Entity Framework Documentation.
+\end{itemize}
+
+\end{document}
